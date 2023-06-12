@@ -24,7 +24,7 @@ public class Main {
         System.out.println("Digite o seu peso:");
         umaPessoa.pesoPessoa = entrada.nextDouble();
 
-        System.out.println("Digite asua idade:");
+        System.out.println("Digite a sua idade:");
         umaPessoa.idadePessoa = entrada.nextInt();
 
         double imc = umaPessoa.calculoIMC(umaPessoa.pesoPessoa, umaPessoa.alturaPessoa);
@@ -40,6 +40,7 @@ public class Main {
 
         //Verifica se a pessoa precisa emagrecer ou não baseada no IMC
         if(imc >= 25){umaPessoa.pessoaEmagrecer();}
+        else if(imc >= 18.5 && imc < 25){System.out.println("Seu peso está no ideal!!! Continue assim!");}
         else{umaPessoa.pessoaEngordar();}
     }
 }
