@@ -10,37 +10,36 @@ public class Main {
 
         System.out.println("Vamos descobrir algumas curiosidades sobre você?");
 
-
-        //Instanciando classe
-        Pessoa umaPessoa = new Pessoa();
-
         //Setando variáveis
         System.out.println("Digite o seu nome:");
-        umaPessoa.nomePessoa = entrada.nextLine();
+        String nomePessoa = entrada.nextLine();
 
         System.out.println("Digite a sua altura");
-        umaPessoa.alturaPessoa = entrada.nextDouble();
+        double alturaPessoa = entrada.nextDouble();
 
         System.out.println("Digite o seu peso:");
-        umaPessoa.pesoPessoa = entrada.nextDouble();
+        double pesoPessoa = entrada.nextDouble();
 
         System.out.println("Digite a sua idade:");
-        umaPessoa.idadePessoa = entrada.nextInt();
+        int idadePessoa = entrada.nextInt();
 
-        double imc = umaPessoa.calculoIMC(umaPessoa.pesoPessoa, umaPessoa.alturaPessoa);
+        //Instanciando classe
+        Pessoa umaPessoa = new Pessoa(nomePessoa, idadePessoa,alturaPessoa);
+
+        double imc = umaPessoa.calculoIMC(pesoPessoa);
 
         System.out.println("Olá " + umaPessoa.nomePessoa + "!");
         System.out.println("Vamos ver suas curiosidades!!!");
 
-       //Fala a idade da pessoa
-        umaPessoa.pessoaEnvelhecer(umaPessoa.idadePessoa);
+        //Fala a idade da pessoa
+        umaPessoa.pessoaEnvelhecer();
 
         //Informa se a pessoa ainda irá crescer e quanto
-        umaPessoa.pessoaCrescer(umaPessoa.idadePessoa);
+        umaPessoa.pessoaCrescer();
 
         //Verifica se a pessoa precisa emagrecer ou não baseada no IMC
-        if(imc >= 25){umaPessoa.pessoaEmagrecer();}
+        if(imc >= 25){umaPessoa.pessoaEmagrecer(pesoPessoa);}
         else if(imc >= 18.5 && imc < 25){System.out.println("Seu peso está no ideal!!! Continue assim!");}
-        else{umaPessoa.pessoaEngordar();}
+        else{umaPessoa.pessoaEngordar(pesoPessoa);}
     }
 }
