@@ -11,19 +11,19 @@ public class Main {
         System.out.println("| BEM-VINDE AO BANCO XPTO |");
         System.out.println("+-------------------------+\n");
 
-        ContaCorrente bancoUsuario = new ContaCorrente();
 
-        //Setando dados do usuário
-        bancoUsuario.saldoCorrentista = 0.0;
 
         System.out.println("Digite o seu nome completo:");
-        bancoUsuario.nomeCorrentista = entrada.nextLine();
+        String nomeCorrentista = entrada.nextLine();
 
         System.out.println("Digite a sua conta-corrente:");
-        bancoUsuario.contaCorrente = entrada.nextInt();
+        int contaCorrente = entrada.nextInt();
 
-        //Exibindo o saldo atual
-        bancoUsuario.ContaCorrente(bancoUsuario.contaCorrente, bancoUsuario.nomeCorrentista);
+        //Instanciando objeto
+        ContaCorrente bancoUsuario = new ContaCorrente(contaCorrente, nomeCorrentista);
+
+        //Exibindo dados da conta-corrente
+        bancoUsuario.InfosCorrente();
 
         //Perguntando o que o usuário quer fazer
         System.out.println("\nDigite as opções a seguir:");
@@ -37,28 +37,23 @@ public class Main {
         if(opcoes != 4){
             while (opcoes != 4){
                 if(opcoes == 1){
-                    System.out.println("\nDeseja fazer um depósito?");
+                    System.out.println("\n> DEPÓSITO");
                     System.out.println("Digite o valor do depósito");
 
                     double depositoDinheiro = entrada.nextDouble();
                     bancoUsuario.depositoConta(depositoDinheiro);
-                    //Exibindo o saldo atual
-                    bancoUsuario.ContaCorrente(bancoUsuario.contaCorrente, bancoUsuario.nomeCorrentista);
-
                 }//Depósito de dinheiro
                 else if(opcoes == 2){
-                    System.out.println("\nDeseja fazer um saque?");
+                    System.out.println("\n> SAQUE");
                     System.out.println("Digite o valor do saque");
 
                     double saqueDinheiro = entrada.nextDouble();
                     bancoUsuario.saqueConta(saqueDinheiro);
-
-                    //Exibindo o saldo atual
-                    bancoUsuario.ContaCorrente(bancoUsuario.contaCorrente, bancoUsuario.nomeCorrentista);
                 }//Saque de dinheiro
                 else if(opcoes == 3){
                     //Exibindo o saldo atual
-                    bancoUsuario.ContaCorrente(bancoUsuario.contaCorrente, bancoUsuario.nomeCorrentista);
+                    System.out.println("\n> CONSULTA SALDO");
+                    bancoUsuario.MostraSaldo();
                 }//Ver saldo
 
                 //Perguntando o que o usuário quer fazer
